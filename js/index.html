@@ -27,39 +27,6 @@
 	</style>
 	<body>
 		<canvas id="myCanvas"> </canvas>
-
-		<script type="text/javascript">
-			var Module = {
-				onRuntimeInitialized: () => {
-					js_resizeCanvas();
-				},
-				print: (function () {})(),
-				printErr: function (text) {
-					console.log(text);
-				},
-				canvas: (function () {
-					return document.getElementById("myCanvas");
-				})(),
-				setStatus: function (text) {},
-				totalDependencies: 0,
-			};
-
-			window.addEventListener("resize", js_resizeCanvas, false);
-
-			function js_resizeCanvas() {
-				const canvas = document.getElementById("myCanvas");
-				if (canvas) {
-					canvas.width = window.innerWidth;
-					canvas.height = window.innerHeight;
-					Module.ccall(
-						"canvas_resize", // name of C function
-						"void", // return type
-						["number", "number"], // argument types
-						[canvas.width, canvas.height]
-					);
-				}
-			}
-		</script>
-		<script async type="text/javascript" src="radha.js"></script>
+		<script src="krsna.js" type="module"></script>
 	</body>
 </html>

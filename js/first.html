@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Radha</title>
+	</head>
+	<style>
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+		}
+		body {
+			background-color: #999;
+			height: 100vh;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		canvas {
+			height: 100%;
+			width: 100%;
+		}
+	</style>
+	<body>
+		<canvas id="myCanvas"> </canvas>
+
+		<script type="text/javascript">
+			var Module = {
+				onRuntimeInitialized: () => {
+					js_resizeCanvas();
+				},
+				print: (function () {})(),
+				printErr: function (text) {
+					console.log(text);
+				},
+				canvas: (function () {
+					return document.getElementById("myCanvas");
+				})(),
+				setStatus: function (text) {},
+				totalDependencies: 0,
+			};
+
+			window.addEventListener("resize", js_resizeCanvas, false);
+
+			function js_resizeCanvas() {
+				const canvas = document.getElementById("myCanvas");
+				if (canvas) {
+					canvas.width = window.innerWidth;
+					canvas.height = window.innerHeight;
+					Module.ccall(
+						"canvas_resize", // name of C function
+						"void", // return type
+						["number", "number"], // argument types
+						[canvas.width, canvas.height]
+					);
+				}
+			}
+		</script>
+		<script async type="text/javascript" src="radha.js"></script>
+	</body>
+</html>
