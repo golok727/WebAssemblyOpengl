@@ -30,8 +30,7 @@
 
 		<script type="text/javascript">
 			var Module = {
-				preRun: [],
-				postRun: () => {
+				onRuntimeInitialized: () => {
 					js_resizeCanvas();
 				},
 				print: (function () {})(),
