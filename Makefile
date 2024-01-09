@@ -1,6 +1,6 @@
 CXX = em++
 
-OUTPUT=./js/radha.js
+OUTPUT=./js/krsna.mjs
 
 SOURCES = ./src/main.cpp ./src/shader.cpp 
 
@@ -16,7 +16,6 @@ RUNTIME_METHODS =-s EXPORTED_RUNTIME_METHODS=ccall,cwrap
 all: $(SOURCES) $(OUTPUT) 
 
 $(OUTPUT): $(SOURCES) 
-	$(CXX) $(SOURCES) -o $(OUTPUT) -I ./includes $(FLAGS) $(USE_WASM) $(PAC_TYPE) $(PAC_FILES) $(FN_EXPORTS) $(RUNTIME_METHODS)
-
+	$(CXX) $(SOURCES) -o $(OUTPUT) -I ./includes $(FLAGS) $(USE_WASM) $(PAC_TYPE) $(PAC_FILES) $(FN_EXPORTS) $(RUNTIME_METHODS) 
 clean: 
 	del $(OUTPUT)
