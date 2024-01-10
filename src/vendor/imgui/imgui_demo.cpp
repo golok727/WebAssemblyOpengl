@@ -1350,7 +1350,7 @@ static void ShowDemoWindowWidgets()
         static int item_current_4 = 0;
         ImGui::Combo(
             "combo 4 (function)", &item_current_4, [](void *data, int n)
-            { return ((const char  **)data)[n]; },
+            { return ((const char **)data)[n]; },
             items, IM_ARRAYSIZE(items));
 
         ImGui::TreePop();
@@ -8362,7 +8362,7 @@ static void ShowExampleAppLongText(bool *p_open)
 }
 
 //-----------------------------------------------------------------------------
-// [SECTION] Example App: Auto Resize / ShowExampleAppAutoResize()
+// [SECTION] Example App: size / ShowExampleAppAutoResize()
 //-----------------------------------------------------------------------------
 
 // Demonstrate creating a window which gets auto-resized according to its content.

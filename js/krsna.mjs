@@ -27,7 +27,7 @@ Module['ready'] = new Promise((resolve, reject) => {
   readyPromiseResolve = resolve;
   readyPromiseReject = reject;
 });
-["_canvas_resize","_memory","___indirect_function_table","_fflush","onRuntimeInitialized"].forEach((prop) => {
+["_canvas_resize","_memory","_save_ini","___indirect_function_table","_fflush","___start_em_js","___stop_em_js","onRuntimeInitialized"].forEach((prop) => {
   if (!Object.getOwnPropertyDescriptor(Module['ready'], prop)) {
     Object.defineProperty(Module['ready'], prop, {
       get: () => abort('You are getting ' + prop + ' on the Promise object, instead of the instance. Use .then() to get called back with the instance, see the MODULARIZE docs in src/settings.js'),
@@ -212,7 +212,7 @@ Module['FS_createPath']("/", "assets", true, true);
     }
 
     }
-    loadPackage({"files": [{"filename": "/assets/Poppins-BoldItalic.ttf", "start": 0, "end": 176588}, {"filename": "/assets/Poppins-ExtraBold.ttf", "start": 176588, "end": 329352}, {"filename": "/assets/Poppins-ExtraBoldItalic.ttf", "start": 329352, "end": 503268}, {"filename": "/assets/Poppins-ExtraLight.ttf", "start": 503268, "end": 664724}, {"filename": "/assets/Poppins-ExtraLightItalic.ttf", "start": 664724, "end": 850892}, {"filename": "/assets/Poppins-Italic.ttf", "start": 850892, "end": 1032904}, {"filename": "/assets/Poppins-LightItalic.ttf", "start": 1032904, "end": 1217364}, {"filename": "/assets/Poppins-Medium.ttf", "start": 1217364, "end": 1373884}, {"filename": "/assets/Poppins-MediumItalic.ttf", "start": 1373884, "end": 1554328}, {"filename": "/assets/Poppins-Regular.ttf", "start": 1554328, "end": 1712568}, {"filename": "/assets/Poppins-Thin.ttf", "start": 1712568, "end": 1874220}, {"filename": "/assets/basic.frag.glsl", "start": 1874220, "end": 1874355}, {"filename": "/assets/basic.vert.glsl", "start": 1874355, "end": 1874552}], "remote_package_size": 1874552});
+    loadPackage({"files": [{"filename": "/assets/Poppins-ExtraBold.ttf", "start": 0, "end": 152764}, {"filename": "/assets/Poppins-Medium.ttf", "start": 152764, "end": 309284}, {"filename": "/assets/Poppins-Regular.ttf", "start": 309284, "end": 467524}, {"filename": "/assets/Poppins-Thin.ttf", "start": 467524, "end": 629176}, {"filename": "/assets/basic.frag.glsl", "start": 629176, "end": 629317}, {"filename": "/assets/basic.vert.glsl", "start": 629317, "end": 629514}, {"filename": "/assets/imgui.ini", "start": 629514, "end": 629723}], "remote_package_size": 629723});
 
   })();
 
@@ -1209,6 +1209,9 @@ function dbg(text) {
 }
 // end include: runtime_debug.js
 // === Body ===
+
+function save_ini(str) { console.log(UTF8ToString(str)); }
+
 
 // end include: preamble.js
 
@@ -6794,6 +6797,11 @@ function dbg(text) {
     };
 
   
+  var _glUniform4f = (location, v0, v1, v2, v3) => {
+      GLctx.uniform4f(webglGetUniformLocation(location), v0, v1, v2, v3);
+    };
+
+  
   var miniTempWebGLFloatBuffers = [];
   
   var _glUniformMatrix4fv = (location, count, transpose, value) => {
@@ -8203,6 +8211,10 @@ function dbg(text) {
       GLFW.active = null;
     };
 
+  var _glfwWindowHint = (target, hint) => {
+      GLFW.hints[target] = hint;
+    };
+
   var isLeapYear = (year) => year%4 === 0 && (year%100 !== 0 || year%400 === 0);
   
   var arraySum = (array, index) => {
@@ -8787,6 +8799,8 @@ var wasmImports = {
   /** @export */
   glUniform1i: _glUniform1i,
   /** @export */
+  glUniform4f: _glUniform4f,
+  /** @export */
   glUniformMatrix4fv: _glUniformMatrix4fv,
   /** @export */
   glUseProgram: _glUseProgram,
@@ -8855,6 +8869,10 @@ var wasmImports = {
   /** @export */
   glfwTerminate: _glfwTerminate,
   /** @export */
+  glfwWindowHint: _glfwWindowHint,
+  /** @export */
+  save_ini: save_ini,
+  /** @export */
   strftime_l: _strftime_l
 };
 var wasmExports = createWasm();
@@ -8879,7 +8897,8 @@ var dynCall_viijii = Module['dynCall_viijii'] = createExportWrapper('dynCall_vii
 var dynCall_iiiiij = Module['dynCall_iiiiij'] = createExportWrapper('dynCall_iiiiij');
 var dynCall_iiiiijj = Module['dynCall_iiiiijj'] = createExportWrapper('dynCall_iiiiijj');
 var dynCall_iiiiiijj = Module['dynCall_iiiiiijj'] = createExportWrapper('dynCall_iiiiiijj');
-
+var ___start_em_js = Module['___start_em_js'] = 233368;
+var ___stop_em_js = Module['___stop_em_js'] = 233425;
 
 // include: postamble.js
 // === Auto-generated postamble setup entry stuff ===
