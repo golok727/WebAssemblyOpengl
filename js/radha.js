@@ -15,6 +15,8 @@ import WasmModule from "./krsna.mjs";
 
 	const mod = await WasmModule(moduleArgs);
 
+	window.addEventListener("resize", js_resizeCanvas);
+
 	function js_resizeCanvas() {
 		if (canvas) {
 			canvas.width = window.innerWidth;

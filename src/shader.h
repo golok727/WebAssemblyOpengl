@@ -3,7 +3,7 @@
 #include <sstream>
 #include <array>
 #include <unordered_map>
-
+#include <glm/glm.hpp>
 struct ShaderSource
 {
 	const char *vertex;
@@ -25,6 +25,7 @@ public:
 	void setUniform2f(const char *name, float x, float y);
 	void setUniform3f(const char *name, float x, float y, float z);
 	void setUniform4f(const char *name, float x, float y, float z, float w);
+	void setUniformMat4f(const char *name, const glm::mat4 &matrix);
 	inline ShaderSource getSrc() { return m_Src; }
 	void use();
 	void detach();

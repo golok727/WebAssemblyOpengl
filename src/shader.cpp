@@ -2,6 +2,7 @@
 #include "shader.h"
 #include <iostream>
 #include <fstream>
+#include <glm/gtc/type_ptr.hpp>
 
 Shader::Shader(const char *vertexShaderSource, const char *fragmentShaderSource)
 {
@@ -55,6 +56,12 @@ void Shader::setUniform4f(const char *name, float x, float y, float z, float w)
 {
 	int location = getUniformLocation(name);
 	glUniform4f(location, x, y, z, w);
+}
+
+void Shader::setUniformMat4f(const char *name, const glm::mat4 &matrix)
+{
+	int location = getUniformLocation(name);
+	glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 }
 
 void Shader::use()
